@@ -20,6 +20,7 @@ cd diy-api
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements
+python create-timeseries.py
 uvicorn main:app --reload
 ```
 
@@ -29,6 +30,7 @@ Here we have:
 - created a python virtual environment
 - activated the python virtual environment
 - installed dependencies
+- created our netcdf file
 - started a `uvicorn` http/https server
 
 
