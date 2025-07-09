@@ -4,11 +4,11 @@ This repo contains material delivered at the NCAS 2025 annual staff meeting. It 
 
 ### What's in the repo?
 
-`diy-api-slides.pdf` contains the slides that were delivered during the session.
-`main.py` contains the FastAPI application and the definition of its endpoints.
-`create-timeseries.py` creates a temperature timeseries netcdf (randomly generated data) for use in our FasAPI API endpoints.
-`requirements.txt` contains the names and versions of pip packages needed to run this repo.
-`plot.html` contains a very simple html web page that accesses some of the FastAPI endpoints.
+- `diy-api-slides.pdf` contains the slides that were delivered during the session.
+- `main.py` contains the FastAPI application and the definition of its endpoints.
+- `create-timeseries.py` creates a temperature timeseries netcdf (randomly generated data) for use in our FasAPI API endpoints.
+- `requirements.txt` contains the names and versions of pip packages needed to run this repo.
+- `plot.html` contains a very simple html web page that accesses some of the FastAPI endpoints.
 
 ### Getting started
 
@@ -18,6 +18,7 @@ This practical parts of this session were delivered using the linux terminal.
 git clone git@github.com:lrrmar/diy-api.git
 cd diy-api
 python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements
 uvicorn main:app --reload
 ```
@@ -26,6 +27,8 @@ Here we have:
 - cloned the repo
 - navigated into the rep
 - created a python virtual environment
+- activated the python virtual environment
+- installed dependencies
 - started a `uvicorn` http/https server
 
 
