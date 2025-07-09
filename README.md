@@ -26,7 +26,7 @@ uvicorn main:app --reload
 
 Here we have:
 - cloned the repo
-- navigated into the rep
+- navigated into the repo
 - created a python virtual environment
 - activated the python virtual environment
 - installed dependencies
