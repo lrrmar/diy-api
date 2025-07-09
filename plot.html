@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Plotting</title>
+  </head>
+  <body>
+    <script>
+      function getTimes() {
+        // This function makes a request to the http server to retrieve the 
+        // times available in the underlying timeseries data. It then uses 
+        // the info to createa display on the web page.
+
+
+        // Make a request to the /times endpoint using the fetch function.
+        fetch('http://localhost:8000/times')
+        .then(response => {
+          // Extract json (body) from the response.
+          return response.json();
+        })
+        .then(data => {
+          // Set the inner HTML (text contained within) of our time range
+          // div.
+          times = data; 
+          document.getElementById('timeRange').innerHTML = times;
+        })
+      }
+
+      function submitPlotColour(event) {
+        // This function captures the colour that is input by the user and
+        // uses it to retrieve a plot image from the server.
+
+
+        // These lines capture the 'submit' event that is triggered when
+        // the button is clicked and then takes the value that was entered
+        // into the 'plotColour' <input> element.
+        event.preventDefault();
+        const colour = event.target.plotColour.value;
+
+        // Get the 'plot' <img> element so that we can change its attributes
+        const img = document.getElementById('plot')
+
+        // Make the 'src' (source) of the image point to our http server, 
+        // including the input colour in the request. Here, the browser
+        // will automatically make this http request for us so we don't need
+        // to use the fetch function explicitly.
+        img.src = `http://localhost:8000/rangePlot?colour=${colour}`
+      }
+    </script>
+    <button onclick="getTimes()">Get time range</button>
+    <div id='timeRange'>
+    </div>
+    <br/>
+    <img id='plot'>
+    <br/>
+    <form onsubmit="submitPlotColour(event)">
+      <label for="plotColour">Enter colour:</label>
+      <input type="text" id="plotColour" name="plotColour" />
+    <button type="submit">Submit</button>
+  </form>
+  </body>
+</html>
